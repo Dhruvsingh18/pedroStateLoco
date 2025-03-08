@@ -1,0 +1,89 @@
+package Subsystems;
+
+import com.qualcomm.robotcore.hardware.Servo;
+import com.rowanmcalpin.nextftc.core.Subsystem;
+import com.rowanmcalpin.nextftc.core.command.Command;
+import com.rowanmcalpin.nextftc.ftc.OpModeData;
+import com.rowanmcalpin.nextftc.ftc.hardware.MultipleServosToSeperatePositions;
+import com.rowanmcalpin.nextftc.ftc.hardware.ServoToPosition;
+
+import java.util.Map;
+
+public class Depo extends Subsystem {
+    // BOILERPLATE
+    public static final Depo INSTANCE = new Depo();
+    private Depo() { }
+
+    // USER CODE
+    public Servo depoRight, depoLeft, wristClaw;
+    public String wrist = "wristClaw";
+    public String right  = "depoRight";
+    public String left= "depoLeft";
+
+
+    public Command resetDepo() {
+        Double rotate = 0.2;
+        Double rightTilt = 1.0;
+        Double leftTilt = 0.0;
+
+        return new MultipleServosToSeperatePositions(
+                Map.of(
+                        depoRight, rightTilt,
+                        depoLeft, leftTilt,
+                        wristClaw, rotate
+                ),
+                this);
+    }
+
+    public Command depositSamp() {
+        Double rotate = 0.2;
+        Double rightTilt = 1.0;
+        Double leftTilt = 0.0;
+
+        return new MultipleServosToSeperatePositions(
+                Map.of(
+                        depoRight, rightTilt,
+                        depoLeft, leftTilt,
+                        wristClaw, rotate
+                ),
+
+                this);
+    }
+
+    public Command specPic() {
+        Double rotate = 0.2;
+        Double rightTilt = 1.0;
+        Double leftTilt = 0.0;
+
+        return new MultipleServosToSeperatePositions(
+                Map.of(
+                        depoRight, rightTilt,
+                        depoLeft, leftTilt,
+                        wristClaw, rotate
+                ),
+
+                this);
+    }
+
+    public Command specDepo() {
+        Double rotate = 0.2;
+        Double rightTilt = 1.0;
+        Double leftTilt = 0.0;
+
+        return new MultipleServosToSeperatePositions(
+                Map.of(
+                        depoRight, rightTilt,
+                        depoLeft, leftTilt,
+                        wristClaw, rotate
+                ),
+
+                this);
+    }
+
+    @Override
+    public void initialize() {
+        wristClaw = OpModeData.INSTANCE.getHardwareMap().get(Servo.class, wrist);
+        depoRight = OpModeData.INSTANCE.getHardwareMap().get(Servo.class, right);
+        depoLeft = OpModeData.INSTANCE.getHardwareMap().get(Servo.class, left);
+    }
+}
