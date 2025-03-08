@@ -17,14 +17,14 @@ public class Depo extends Subsystem {
     // USER CODE
     public Servo depoRight, depoLeft, wristClaw;
     public String wrist = "wristClaw";
-    public String right  = "depoRight";
-    public String left= "depoLeft";
+    public String right  = "RightDepo";
+    public String left= "LeftDepo";
 
 
     public Command resetDepo() {
-        Double rotate = 0.2;
-        Double rightTilt = 1.0;
-        Double leftTilt = 0.0;
+        Double rotate = 0.6;
+        Double rightTilt = 0.03;
+        Double leftTilt = 0.97;
 
         return new MultipleServosToSeperatePositions(
                 Map.of(
@@ -36,9 +36,9 @@ public class Depo extends Subsystem {
     }
 
     public Command depositSamp() {
-        Double rotate = 0.2;
-        Double rightTilt = 1.0;
-        Double leftTilt = 0.0;
+        Double rotate = 0.6;
+        Double rightTilt = 0.63;
+        Double leftTilt = 0.37;
 
         return new MultipleServosToSeperatePositions(
                 Map.of(
@@ -51,9 +51,9 @@ public class Depo extends Subsystem {
     }
 
     public Command specPic() {
-        Double rotate = 0.2;
-        Double rightTilt = 1.0;
-        Double leftTilt = 0.0;
+        Double rotate = 0.6;
+        Double rightTilt = 0.67;
+        Double leftTilt = 0.33;
 
         return new MultipleServosToSeperatePositions(
                 Map.of(
@@ -66,9 +66,9 @@ public class Depo extends Subsystem {
     }
 
     public Command specDepo() {
-        Double rotate = 0.2;
-        Double rightTilt = 1.0;
-        Double leftTilt = 0.0;
+        Double rotate = 0.6;
+        Double rightTilt = 0.9;
+        Double leftTilt = 0.1;
 
         return new MultipleServosToSeperatePositions(
                 Map.of(
@@ -85,5 +85,6 @@ public class Depo extends Subsystem {
         wristClaw = OpModeData.INSTANCE.getHardwareMap().get(Servo.class, wrist);
         depoRight = OpModeData.INSTANCE.getHardwareMap().get(Servo.class, right);
         depoLeft = OpModeData.INSTANCE.getHardwareMap().get(Servo.class, left);
+
     }
 }
